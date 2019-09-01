@@ -1,3 +1,4 @@
+import sys
 import time
 from tkinter import *
  
@@ -21,6 +22,14 @@ def task():
     print("Task running")
     label_text.set("Changed")
     
+
+def kill_task():
+    print("Killing")
+
+    global root
+    # root.quit()
+    root.destroy()
+    sys.exit()
  
 
 # Full-screen mode
@@ -39,7 +48,10 @@ root.overrideredirect(True)
 # Window uses:
 # "width x height + x_offset + y_offset" (no spaces)
 
-root.geometry("{0}x{1}+0+0".format(root.winfo_screenwidth(), root.winfo_screenheight()))
+root_geo = "{0}x{1}+0+0".format(root.winfo_screenwidth(), root.winfo_screenheight())
+root_geo = "{0}x{1}+0+0".format(1024, 600)
+print(root_geo)
+root.geometry(root_geo)
 root.configure(bg=root_bg)
 root.focus_set()  # <-- move focus to this widget
 
@@ -51,6 +63,7 @@ w.pack()
 
 
 root.after(1000, task)
+root.after(3000, kill_task)
 root.mainloop()
 
 
