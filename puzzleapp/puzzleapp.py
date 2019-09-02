@@ -1,7 +1,10 @@
 import gui
+from tkinter import Tk
+
 
 def main():
-    app = gui.PuzzleGui()
+    root = Tk()
+    app = gui.PuzzleGui(root)
     app.start()
 
 main()
