@@ -8,12 +8,13 @@ class PuzzleGui:
     def __init__(self, root, switch_controller):
         self.master = root
         self.switch_controller = switch_controller
+        self.progress_text = StringVar()
         self.left_msg_text = StringVar()
         self.right_msg_text = StringVar()
         self.switch_inputs = StringVar()
         self.root_bg = "#405659"
         self.frame_bg = self.root_bg
-
+        self.text_color = "#b1e7f0"
 
         self.initialize_app()
 
@@ -23,36 +24,63 @@ class PuzzleGui:
         # for debug, update frame color
         # frame_bg = "green"
         # frame = Frame(self.master, bg="green")
+        master_frame = Frame(self.master, bg=self.root_bg)
 
-        switch_frame = Frame(self.master, bg=self.frame_bg)
-        switch_frame.pack(side=BOTTOM, fill='x', expand='no')
+        progress_frame = master_frame
+        switch_frame = master_frame
+        left_msg_frame = master_frame
+        right_msg_frame = master_frame
 
-        left_msg_frame = Frame(self.master, bg=self.frame_bg)
-        left_msg_frame.pack(side=LEFT, fill='both', expand='no')
+        progress_box = Label(master_frame,
+                             font=("arial", 12, "bold"),
+                             justify="left",
+                             textvariable=self.progress_text,
+                             bg=self.root_bg,
+                             fg=self.text_color)
 
-        right_msg_frame = Frame(self.master, bg=self.frame_bg)
-        right_msg_frame.pack(side=RIGHT, fill='x', expand='no')
-
-        left_msg_box = Label(left_msg_frame,
-                  font=("courier new", 36, "bold italic"),
+        left_msg_box = Label(master_frame,
+                  font=("courier new", 24, "bold"),
                   justify="left",
                   textvariable=self.left_msg_text,
-                  bg="#405659",
-                  fg="#b1e7f0")
+                  # bg="green",
+                  bg=self.root_bg,
+                  fg=self.text_color)
 
-        right_msg_box = Label(right_msg_frame,
+        right_msg_box = Label(master_frame,
                   font=("times new roman", 20, "italic"),
                   justify="center",
                   textvariable=self.right_msg_text,
-                  bg="#405659",
-                  fg="#b1e7f0")
+                  # bg="blue",
+                  bg=self.root_bg,
+                  fg=self.text_color)
 
-        switch_box = Label(switch_frame,
+        image_box = Label(master_frame,
+                          font=("courier new", 120, "bold"),
+                          justify="center",
+                          text="X",
+                          # bg="yellow",
+                          bg=self.root_bg,
+                          fg=self.text_color)
+
+        switch_box = Label(master_frame,
                   font=("arial", 72, "bold"),
                   justify="center",
                   textvariable=self.switch_inputs,
-                  bg="#405659",
-                  fg="#b1e7f0")
+                  bg=self.root_bg,
+                  fg=self.text_color)
+
+        # Grid:
+        master_frame.grid(row=0, column=0, sticky="NSEW")
+        master_frame.grid_rowconfigure(0, weight=1)
+        master_frame.grid_columnconfigure(0, weight=1)
+        progress_box.grid(row=0, column=0, columnspan=3, sticky="NW")
+        left_msg_box.grid(row=1, column=0, columnspan=1, sticky="NW")
+        image_box.grid(row=2, column=1, columnspan=2, sticky="NSEW", padx=200, pady=20)
+        right_msg_box.grid(row=3, column=2, columnspan=1, sticky="SE", padx=5)
+        switch_box.grid(row=4, column=0, columnspan=3, sticky="S")
+
+        progress = "10%"
+        self.progress_text.set(progress)
 
         machine_text = " System Enabled\n Run Diagnostics..."
         self.left_msg_text.set(machine_text)
@@ -73,10 +101,12 @@ class PuzzleGui:
         print(root_geo)
         self.master.geometry(root_geo)
         self.master.configure(bg=self.root_bg)
+
+        self.master.grid_rowconfigure(0, weight=1)
+        self.master.grid_columnconfigure(0, weight=1)
+
         self.master.focus_set()  # <-- move focus to this widget
-        left_msg_box.pack()
-        right_msg_box.pack()
-        switch_box.pack()
+
 
     def register_task(self, delay, task, reccuring, *args):
         self.master.after(delay, task, args)
@@ -90,8 +120,5 @@ class PuzzleGui:
                           self.switch_inputs, self.switch_controller)
         self.master.after(1000, test_task, self.left_msg_text)
         self.master.after(6000, kill_task, self.master)
-
-        # self.register_task(1000, task, False, self.left_msg_text)
-        # self.register_task(3000, kill_task, False)
 
         self.master.mainloop()
