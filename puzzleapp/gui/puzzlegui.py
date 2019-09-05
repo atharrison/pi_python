@@ -107,8 +107,10 @@ class PuzzleGui:
         self.master.after(0, puzzle_desc_task, self.left_msg_text, self.puzzle_tracker, self.master)
         self.master.after(2000, quote_task, self.right_msg_text, self.puzzle_tracker, self.master)
         self.master.after(0, progress_task, self.progress_text, self.puzzle_tracker, self.master)
-        self.master.after(1000, auto_set_diag, self.puzzle_tracker)
-        self.master.after(6000, kill_task, self.master)
+        self.master.after(1000, push_button, self.master, self.switch_controller)
+        self.master.after(0, check_for_next_answer, self.master, self.puzzle_tracker, self.switch_controller)
+        # self.master.after(1000, auto_set_diag, self.puzzle_tracker)
+        self.master.after(11000, kill_task, self.master)
 
     def start(self):
         self.master.mainloop()

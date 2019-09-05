@@ -1,1 +1,2 @@
-from .switch_controller import SwitchController
+from .switch_controller_gpio import SwitchControllerGPIO
+from .switch_controller_mock import SwitchControllerMock
