@@ -15,11 +15,12 @@ def quote_task(label, puzzle_tracker, master):
     label.set(puzzle_tracker.current_quote())
     master.after(500, quote_task, label, puzzle_tracker, master)
 
-def progress_task(label, puzzle_tracker, master):
+def progress_task(bar, puzzle_tracker, master):
     # print("Setting Progress")
-    label.set(puzzle_tracker.get_progress_text())
+    # label.set(puzzle_tracker.get_progress_text())
+    bar['value'] = puzzle_tracker.get_progress_percent()
     # TODO: Make a cool progress bar representation
-    master.after(500, progress_task, label, puzzle_tracker, master)
+    master.after(500, progress_task, bar, puzzle_tracker, master)
 
 def kill_task(master):
     print("Killing")
@@ -42,11 +43,12 @@ def set_switch_input_text(master, switch_inputs, switch_controller):
     # Register to execute again
     master.after(1000, set_switch_input_text, master, switch_inputs, switch_controller)
 
-def check_for_next_answer(master, puzzle_tracker, switch_controller):
+def check_for_next_answer(master, puzzle_tracker, switch_controller, solution_text):
 
     current_switch_state = switch_controller.input_as_array()
-    if(puzzle_tracker.check_answer_against_switch__state(current_switch_state)):
+    if(puzzle_tracker.check_answer_against_switch_state(current_switch_state)):
         # Puzzle answered, move to next puzzle
         puzzle_tracker.increment_puzzle_index()
+        solution_text.set(puzzle_tracker.current_solution_text())
 
-    master.after(200, check_for_next_answer, master, puzzle_tracker, switch_controller)
+    master.after(200, check_for_next_answer, master, puzzle_tracker, switch_controller, solution_text)
