@@ -31,7 +31,7 @@ def push_button(master, switch_controller):
     # Simulate the user updating the switch values, and pushing the button
     print("Button Pushed.")
     switch_controller.simulate_button_push()
-    master.after(1000, push_button, master, switch_controller)
+    master.after(3000, push_button, master, switch_controller)
 
 def auto_set_diag(puzzle_tracker):
     puzzle_tracker.set_diagnostics_ran(True)
@@ -41,7 +41,7 @@ def set_switch_input_text(master, switch_inputs, switch_controller):
     switch_inputs.set(switch_controller.input_as_string())
 
     # Register to execute again
-    master.after(1000, set_switch_input_text, master, switch_inputs, switch_controller)
+    master.after(3000, set_switch_input_text, master, switch_inputs, switch_controller)
 
 def check_for_next_answer(master, puzzle_tracker, switch_controller, solution_text):
 

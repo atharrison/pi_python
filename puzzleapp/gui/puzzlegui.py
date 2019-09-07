@@ -3,8 +3,11 @@ from tkinter import *
 from tkinter.ttk import Progressbar, Style
 from .tasks import *
 
-TROUGH_COLOR = "#405659"
-BAR_COLOR = "#b1e7f0"
+ROOT_BG = "#405659"
+TEXT_COLOR = "#b1e7f0"
+TROUGH_COLOR = ROOT_BG
+BAR_COLOR = TEXT_COLOR
+
 
 class PuzzleGui:
 
@@ -17,9 +20,9 @@ class PuzzleGui:
         self.right_msg_text = StringVar()
         self.switch_inputs = StringVar()
         self.solution_text = StringVar()
-        self.root_bg = "#405659"
+        self.root_bg = ROOT_BG
         self.frame_bg = self.root_bg
-        self.text_color = "#b1e7f0"
+        self.text_color = TEXT_COLOR
 
         # images must be attached to an object. Local ones will be garbage collected
         self.image = PhotoImage(file="images/Compass_F.gif")
@@ -59,7 +62,7 @@ class PuzzleGui:
         progress_canvas.grid()
 
         left_msg_box = Label(master_frame,
-                  font=("courier new", 18, "bold"),
+                  font=("courier new", 14, "bold"),
                   justify="left",
                   textvariable=self.left_msg_text,
                   # bg="green",
@@ -67,7 +70,7 @@ class PuzzleGui:
                   fg=self.text_color)
 
         right_msg_box = Label(master_frame,
-                  font=("times new roman", 20, "italic"),
+                  font=("times new roman", 12, "italic"),
                   justify="center",
                   textvariable=self.right_msg_text,
                   # bg="blue",
@@ -99,13 +102,13 @@ class PuzzleGui:
 
         # self.progress_box.grid(row=0, column=0, columnspan=3, sticky="NW")
         progress_canvas.grid(row=0, column=0, columnspan=3, sticky="NW")
-        left_msg_box.grid(row=1, column=0, rowspan=2, columnspan=1, sticky="NW", pady=100)
+        left_msg_box.grid(row=1, column=0, rowspan=2, columnspan=1, sticky="NW",pady=100)
 
-        solution_box.grid(row=2, column=1, columnspan=1, sticky="N", padx=300, pady=0)
+        solution_box.grid(row=2, column=1, columnspan=1, sticky="N", padx=30, pady=0)
         solution_box.grid_rowconfigure(0, weight=1)
         solution_box.grid_columnconfigure(0, weight=1)
 
-        right_msg_box.grid(row=3, column=2, columnspan=1, sticky="SE")#, padx=5)
+        right_msg_box.grid(row=3, column=2, columnspan=1, sticky="SE", padx=5)
         switch_box.grid(row=4, column=0, columnspan=3, sticky="S")
 
         self.master.overrideredirect(True)
@@ -129,15 +132,14 @@ class PuzzleGui:
 
 
     def register_tasks(self):
-        self.master.after(0, set_switch_input_text, self.master,
+        self.master.after(1000, set_switch_input_text, self.master,
                           self.switch_inputs, self.switch_controller)
         self.master.after(0, puzzle_desc_task, self.left_msg_text, self.puzzle_tracker, self.master)
         self.master.after(0, quote_task, self.right_msg_text, self.puzzle_tracker, self.master)
         self.master.after(0, progress_task, self.progress_box, self.puzzle_tracker, self.master)
-        self.master.after(1000, push_button, self.master, self.switch_controller)
+        self.master.after(3000, push_button, self.master, self.switch_controller)
         self.master.after(0, check_for_next_answer, self.master, self.puzzle_tracker, self.switch_controller, self.solution_text)
-        # self.master.after(1000, auto_set_diag, self.puzzle_tracker)
-        self.master.after(11000, kill_task, self.master)
+        self.master.after(34000, kill_task, self.master)
 
     def start(self):
         self.master.mainloop()

@@ -6,6 +6,7 @@ class SwitchControllerMock():
         self.index = 0
         self.puzzle_solutions = [
             [0, 0, 0, 0, 0, 0, 0, 0],
+            [1, 1, 1, 1, 1, 1, 1, 1],
             [0, 0, 0, 0, 0, 0, 0, 1],
             [0, 0, 0, 0, 0, 0, 1, 0],
             [0, 0, 0, 0, 0, 0, 1, 1],
