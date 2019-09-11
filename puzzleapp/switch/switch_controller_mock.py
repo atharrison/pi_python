@@ -35,3 +35,6 @@ class SwitchControllerMock():
         # Simulate a user entering the next puzzle
         self.index = (self.index+1) % len(self.puzzle_solutions)
         print("Index updated to {0}".format(self.index))
+
+    def is_button_pushed(self):
+        return True # Always return true, for mocking

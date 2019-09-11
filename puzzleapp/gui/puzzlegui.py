@@ -115,6 +115,7 @@ class PuzzleGui:
 
         # Pressing Escape kills the window
         self.master.bind("<Escape>", lambda e: kill_task(self.master))
+        #self.master.bind("<Control-c>", lambda e: kill_task(self.master))
 
         # Window uses:
         # "width x height + x_offset + y_offset" (no spaces)
@@ -137,9 +138,9 @@ class PuzzleGui:
         self.master.after(0, puzzle_desc_task, self.left_msg_text, self.puzzle_tracker, self.master)
         self.master.after(0, quote_task, self.right_msg_text, self.puzzle_tracker, self.master)
         self.master.after(0, progress_task, self.progress_box, self.puzzle_tracker, self.master)
-        self.master.after(3000, push_button, self.master, self.switch_controller)
+        #self.master.after(500, push_button, self.master, self.switch_controller)
         self.master.after(0, check_for_next_answer, self.master, self.puzzle_tracker, self.switch_controller, self.solution_text)
-        self.master.after(34000, kill_task, self.master)
+        self.master.after(340000, kill_task, self.master)
 
     def start(self):
         self.master.mainloop()

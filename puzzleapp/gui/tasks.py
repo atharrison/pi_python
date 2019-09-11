@@ -41,14 +41,18 @@ def set_switch_input_text(master, switch_inputs, switch_controller):
     switch_inputs.set(switch_controller.input_as_string())
 
     # Register to execute again
-    master.after(3000, set_switch_input_text, master, switch_inputs, switch_controller)
+    master.after(50, set_switch_input_text, master, switch_inputs, switch_controller)
 
 def check_for_next_answer(master, puzzle_tracker, switch_controller, solution_text):
 
-    current_switch_state = switch_controller.input_as_array()
-    if(puzzle_tracker.check_answer_against_switch_state(current_switch_state)):
-        # Puzzle answered, move to next puzzle
-        puzzle_tracker.increment_puzzle_index()
-        solution_text.set(puzzle_tracker.current_solution_text())
+    #print("Checking for button pushed and answer...")
+    if(switch_controller.is_button_pushed()):
+        print("Detected button pushed...")
+        current_switch_state = switch_controller.input_as_array()
+        if(puzzle_tracker.check_answer_against_switch_state(current_switch_state)):
+            # Puzzle answered, move to next puzzle
+            print("Puzzle Solved! Incrementing index.")
+            puzzle_tracker.increment_puzzle_index()
+            solution_text.set(puzzle_tracker.current_solution_text())
 
-    master.after(200, check_for_next_answer, master, puzzle_tracker, switch_controller, solution_text)
+    master.after(50, check_for_next_answer, master, puzzle_tracker, switch_controller, solution_text)
