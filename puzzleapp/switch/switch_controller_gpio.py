@@ -42,11 +42,12 @@ class SwitchControllerGPIO():
             return True
 
     def blink_button_fast(self):
+        blink_rate = 0.1
         for i in range(0,5):
             GPIO.output(led_pin, True)
-            time.sleep(0.2)
+            time.sleep(blink_rate)
             GPIO.output(led_pin, False)
-            time.sleep(0.2)
+            time.sleep(blink_rate)
 
     def input_as_string(self):
         return "".join(map(str, self.switch_data()))
