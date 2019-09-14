@@ -1,11 +1,19 @@
+import os
 import socket
+import struct
+import subprocess
 
 
 class IPAddress:
 
     def __init__(self):
-        hostname = socket.gethostname()
-        self.address = socket.gethostbyname(hostname)
+        if os.name == 'nt':
+            self.on_windows = True
+        else:
+            self.on_windows = False
 
     def ip(self):
-        return self.address
+        if self.on_windows:
+            return socket.gethostbyname(socket.gethostname())
+        else:
+            return subprocess.check_output(['hostname', '-I']).decode("utf-8").split(" ")[0]
