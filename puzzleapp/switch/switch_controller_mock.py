@@ -1,3 +1,5 @@
+import time
+
 
 class SwitchControllerMock():
 
@@ -5,8 +7,8 @@ class SwitchControllerMock():
         self.switches = [0, 0, 0, 0, 0, 0, 0, 0]
         self.index = 0
         self.puzzle_solutions = [
-            [0, 0, 0, 0, 0, 0, 0, 0],
             [1, 1, 1, 1, 1, 1, 1, 1],
+            [0, 0, 0, 0, 0, 0, 0, 0],
             [0, 0, 0, 0, 0, 0, 0, 1],
             [0, 0, 0, 0, 0, 0, 1, 0],
             [0, 0, 0, 0, 0, 0, 1, 1],
@@ -38,3 +40,10 @@ class SwitchControllerMock():
 
     def is_button_pushed(self):
         return True # Always return true, for mocking
+
+    def blink_button_fast(self):
+        for i in range (0,5):
+            print("Blink ON")
+            time.sleep(0.1)
+            print("Blink OFF")
+            time.sleep(0.1)

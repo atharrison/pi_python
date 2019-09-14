@@ -1,5 +1,8 @@
 import random
-import RPi.GPIO as GPIO
+try:
+    import RPi.GPIO as GPIO
+except ImportError:
+    pass
 import time
 
 led_pin = 4
@@ -38,8 +41,20 @@ class SwitchControllerGPIO():
             GPIO.output(led_pin, True)
             return True
 
+    def blink_button_fast(self):
+        for i in range(0,5):
+            GPIO.output(led_pin, True)
+            time.sleep(0.2)
+            GPIO.output(led_pin, False)
+            time.sleep(0.2)
+
     def input_as_string(self):
         return "".join(map(str, self.switch_data()))
 
     def input_as_array(self):
         return self.switch_data()
+
+    def simulate_button_push(self):
+        # Only here to conform,
+        # in case I leave in the task that auto-pushes the button
+        pass

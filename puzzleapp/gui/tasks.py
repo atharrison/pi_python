@@ -53,6 +53,10 @@ def check_for_next_answer(master, puzzle_tracker, switch_controller, solution_te
             # Puzzle answered, move to next puzzle
             print("Puzzle Solved! Incrementing index.")
             puzzle_tracker.increment_puzzle_index()
+            master.after(0, fast_blink_task, switch_controller)
             solution_text.set(puzzle_tracker.current_solution_text())
 
     master.after(50, check_for_next_answer, master, puzzle_tracker, switch_controller, solution_text)
+
+def fast_blink_task(switch_controller):
+    switch_controller.blink_button_fast()

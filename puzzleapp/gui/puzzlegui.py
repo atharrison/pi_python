@@ -1,10 +1,11 @@
-import time
 from tkinter import *
 from tkinter.ttk import Progressbar, Style
 from .tasks import *
+from .ip_address import IPAddress
 
 ROOT_BG = "#405659"
 TEXT_COLOR = "#b1e7f0"
+HIDDEN_TEXT_COLOR = "#516770"
 TROUGH_COLOR = ROOT_BG
 BAR_COLOR = TEXT_COLOR
 
@@ -20,9 +21,11 @@ class PuzzleGui:
         self.right_msg_text = StringVar()
         self.switch_inputs = StringVar()
         self.solution_text = StringVar()
+        self.ip_text = StringVar()
         self.root_bg = ROOT_BG
         self.frame_bg = self.root_bg
         self.text_color = TEXT_COLOR
+        self.hidden_text_color = HIDDEN_TEXT_COLOR
 
         # images must be attached to an object. Local ones will be garbage collected
         # self.image = PhotoImage(file="images/Compass_F.gif")
@@ -77,6 +80,17 @@ class PuzzleGui:
                   bg=self.root_bg,
                   fg=self.text_color)
 
+        ip_address = IPAddress()
+        ip_box = Label(master_frame,
+                font=("courier new", 8, ""),
+                       justify="right",
+                       text=ip_address.ip(),
+                       # textvariable=self.ip_text,
+                       bg=self.root_bg,
+                       # bg="green",
+                       fg=self.hidden_text_color
+                       )
+
         solution_box = Label(master_frame,
                           font=("courier new", 12, ""),
                           justify="right",
@@ -110,6 +124,7 @@ class PuzzleGui:
 
         right_msg_box.grid(row=3, column=2, columnspan=1, sticky="SE", padx=5)
         switch_box.grid(row=4, column=0, columnspan=3, sticky="S")
+        ip_box.grid(row=4, column=2, columnspan=1, rowspan=1, sticky="SE")
 
         self.master.overrideredirect(True)
 
@@ -138,9 +153,13 @@ class PuzzleGui:
         self.master.after(0, puzzle_desc_task, self.left_msg_text, self.puzzle_tracker, self.master)
         self.master.after(0, quote_task, self.right_msg_text, self.puzzle_tracker, self.master)
         self.master.after(0, progress_task, self.progress_box, self.puzzle_tracker, self.master)
-        #self.master.after(500, push_button, self.master, self.switch_controller)
         self.master.after(0, check_for_next_answer, self.master, self.puzzle_tracker, self.switch_controller, self.solution_text)
-        self.master.after(340000, kill_task, self.master)
+
+        # If self-destructing, do this:
+        self.master.after(34000, kill_task, self.master)
+
+        # If mocking, do this:
+        # self.master.after(500, push_button, self.master, self.switch_controller)
 
     def start(self):
         self.master.mainloop()
