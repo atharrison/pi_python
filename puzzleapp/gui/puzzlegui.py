@@ -25,7 +25,7 @@ class PuzzleGui:
         self.text_color = TEXT_COLOR
 
         # images must be attached to an object. Local ones will be garbage collected
-        self.image = PhotoImage(file="images/Compass_F.gif")
+        # self.image = PhotoImage(file="images/Compass_F.gif")
 
         self.initialize_app()
 
