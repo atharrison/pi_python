@@ -56,6 +56,7 @@ class SwitchControllerGPIO():
         return self.switch_data()
 
     def simulate_button_push(self):
-        # Only here to conform,
+        # Do nothing.
+        # Only here to conform
         # in case I leave in the task that auto-pushes the button
         pass

@@ -146,6 +146,8 @@ class PuzzleGui:
 
         self.master.focus_set()  # <-- move focus to this widget
 
+        # Write the SolutionText using the current puzzle state:
+        self.solution_text.set(self.puzzle_tracker.current_solution_text())
 
     def register_tasks(self):
         self.master.after(1000, set_switch_input_text, self.master,
@@ -159,7 +161,7 @@ class PuzzleGui:
         self.master.after(34000, kill_task, self.master)
 
         # If mocking, do this:
-        # self.master.after(500, push_button, self.master, self.switch_controller)
+        self.master.after(500, push_button, self.master, self.switch_controller)
 
     def start(self):
         self.master.mainloop()
