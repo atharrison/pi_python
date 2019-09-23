@@ -2,7 +2,7 @@ from .single_puzzle_data import SinglePuzzleData
 
 import os
 
-PUZZLE_STATE_FILE_LINUX="/tmp/puzzle_app_state.txt"
+PUZZLE_STATE_FILE_LINUX="~/tmp/puzzle_app_state.txt"
 PUZZLE_STATE_FILE_WINDOWS="C:/tmp/puzzle_app_state.txt"
 
 class PuzzleTracker:
