@@ -54,6 +54,9 @@ class PuzzleTracker:
         except ValueError as ex:
             print("Error reading {0}, using index=0".format(self.puzzle_state_filename))
             index = 0
+        except Exception as ex:
+            print("Unknown error occurred while loading state: {0}".format(ex))
+            index = 0
 
         self.puzzle_index = index
         self.load_puzzles(self.puzzle_index)
