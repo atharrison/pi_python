@@ -59,6 +59,10 @@ class PuzzleTracker:
             index = 0
 
         self.puzzle_index = index
+
+        # If you want to reset, set index here to 0
+        self.puzzle_index = 0
+
         self.load_puzzles(self.puzzle_index)
 
     def check_answer_against_switch_state(self, switch_state):
@@ -92,69 +96,87 @@ class PuzzleTracker:
         return float(self.puzzle_index) / float(self.get_total_puzzles()) * 100
 
     def load_puzzles(self, puzzle_index):
-        self.puzzles.append(SinglePuzzleData(" System Enabled\n Run Diagnostics...\n\n Switch everything to 1,\n then press the button.",
+        idx = 0
+        self.puzzles.append(SinglePuzzleData(" System Enabled\n Diagnostics Part 1 ...\n\n Switch everything to 1,\n then press the button.",
                                              "",
                                              [1, 1, 1, 1, 1, 1, 1, 1],
+                                             "   Progress     ",
+                                             "  ",
+                                             puzzle_index > idx))
+        idx+=1
+        self.puzzles.append(SinglePuzzleData(" System Enabled\n Diagnostics Part 2 ...\n\n Now, switch everything to 0,\n then press the button.",
+                                             "                    ",
+                                             [0, 0, 0, 0, 0, 0, 0, 0],
                                              "----------------",
                                              "--",
-                                             puzzle_index > 0))
-        self.puzzles.append(SinglePuzzleData(" Puzzle 1\n Binary Numbers",
+                                             puzzle_index > idx))
+        idx+=1
+        self.puzzles.append(SinglePuzzleData(" Congratulations!\n You have unlocked the PuzzleBox 1000!\n\n To begin, find the puzzle named\n  'Binary Numbers'.",
                                              "Every journey begins\n  with the first step.\n    ― Lao Tzu",
                                              [0, 0, 0, 0, 0, 0, 0, 1],
-                                             "Solved 1",
+                                             "~~~~~~~~~~~~~~~~",
                                              "  ",
-                                             puzzle_index > 1))
-        self.puzzles.append(SinglePuzzleData(" To solve this puzzle\n you will need\n Wits and skills\n for you to succeed.\n\n\n\n\nand a line here.",
-                                             "Quote 2",
-                                             [0, 0, 0, 0, 0, 0, 1, 0],
-                                             "Solved 2",
-                                             "TX",
-                                             puzzle_index > 2))
+                                             puzzle_index > idx))
+        idx+=1
+        self.puzzles.append(SinglePuzzleData(" Most puzzles will be solved in groups of 4, \n related in some way.\n The column on the right\n will guide you on your way.",
+                                             "Never give up and\n   good luck will find you.\n    - Falcor,\n     The Neverending Story",
+                                             [0, 1, 0, 0, 1, 0, 1, 1],
+                                             "~000X0000000000~",
+                                             "CA",
+                                             puzzle_index > idx))
+        idx += 1
         self.puzzles.append(SinglePuzzleData(" Puzzle 3",
                                              "Quote 3",
                                              [0, 0, 0, 0, 0, 0, 1, 1],
                                              "Solved 3",
                                              "AZ",
-                                             puzzle_index > 3))
+                                             puzzle_index > idx))
+        idx += 1
         self.puzzles.append(SinglePuzzleData(" Puzzle 4",
                                              "Quote 4",
                                              [0, 0, 0, 0, 0, 1, 0, 0],
                                              "Solved 4",
-                                             "CA",
-                                             puzzle_index > 4))
+                                             "TX",
+                                             puzzle_index > idx))
+        idx += 1
         self.puzzles.append(SinglePuzzleData(" Puzzle 5",
                                              "Quote 5",
                                              [0, 0, 0, 0, 0, 1, 0, 1],
                                              "Solved 5",
                                              "NV",
-                                             puzzle_index > 5))
+                                             puzzle_index > idx))
+        idx += 1
         self.puzzles.append(SinglePuzzleData(" Puzzle 6",
                                              "Quote 6",
                                              [0, 0, 0, 0, 0, 1, 1, 0],
                                              "Solved 6",
                                              "NM",
-                                             puzzle_index > 6))
+                                             puzzle_index > idx))
+        idx += 1
         self.puzzles.append(SinglePuzzleData(" Puzzle 7",
                                              "Quote 7",
                                              [0, 0, 0, 0, 0, 1, 1, 1],
                                              "Solved 7",
-                                             "??",
-                                             puzzle_index > 7))
+                                             "4C",
+                                             puzzle_index > idx))
+        idx += 1
         self.puzzles.append(SinglePuzzleData(" Puzzle 8",
                                              "Quote 8",
                                              [0, 0, 0, 0, 1, 0, 0, 0],
                                              "Solved 8",
                                              "??",
-                                             puzzle_index > 8))
+                                             puzzle_index > idx))
+        idx += 1
         self.puzzles.append(SinglePuzzleData(" Puzzle 9",
                                              "Quote 9",
                                              [0, 0, 0, 0, 1, 0, 0, 1],
                                              "Solved 9",
                                              "??",
-                                             puzzle_index > 9))
+                                             puzzle_index > idx))
+        idx += 1
         self.puzzles.append(SinglePuzzleData(" Puzzle 10",
                                              "Quote 10",
                                              [0, 0, 0, 0, 1, 0, 1, 0],
                                              "Solved X",
                                              "??",
-                                             puzzle_index > 10))
+                                             puzzle_index > idx))

@@ -155,13 +155,13 @@ class PuzzleGui:
         self.master.after(0, puzzle_desc_task, self.left_msg_text, self.puzzle_tracker, self.master)
         self.master.after(0, quote_task, self.right_msg_text, self.puzzle_tracker, self.master)
         self.master.after(0, progress_task, self.progress_box, self.puzzle_tracker, self.master)
-        self.master.after(0, check_for_next_answer, self.master, self.puzzle_tracker, self.switch_controller, self.solution_text)
+        self.master.after(1000, check_for_next_answer, self.master, self.puzzle_tracker, self.switch_controller, self.solution_text)
 
         # If self-destructing, do this:
-        self.master.after(34000, kill_task, self.master)
+        # self.master.after(34000, kill_task, self.master)
 
         # If mocking, do this:
-        self.master.after(500, push_button, self.master, self.switch_controller)
+        self.master.after(1500, push_button, self.master, self.switch_controller)
 
     def start(self):
         self.master.mainloop()

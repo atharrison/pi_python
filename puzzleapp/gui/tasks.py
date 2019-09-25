@@ -59,4 +59,5 @@ def check_for_next_answer(master, puzzle_tracker, switch_controller, solution_te
     master.after(50, check_for_next_answer, master, puzzle_tracker, switch_controller, solution_text)
 
 def fast_blink_task(switch_controller):
+    print("\a") # Beep
     switch_controller.blink_button_fast()
