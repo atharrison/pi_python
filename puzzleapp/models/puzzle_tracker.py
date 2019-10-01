@@ -113,70 +113,77 @@ class PuzzleTracker:
         idx+=1
         self.puzzles.append(SinglePuzzleData(" Congratulations!\n You have unlocked the PuzzleBox 1000!\n\n To begin, find the puzzle named\n  'Binary Numbers'.",
                                              "Every journey begins\n  with the first step.\n    ― Lao Tzu",
-                                             [0, 0, 0, 0, 0, 0, 0, 1],
+                                             [0, 0, 0, 1, 1, 0, 1, 1],
                                              "~~~~~~~~~~~~~~~~",
                                              "  ",
                                              puzzle_index > idx))
         idx+=1
         self.puzzles.append(SinglePuzzleData(" Most puzzles will be solved in groups of 4, \n related in some way.\n The column on the right\n will guide you on your way.",
                                              "Never give up and\n   good luck will find you.\n    - Falcor,\n     The Neverending Story",
-                                             [0, 1, 0, 0, 1, 0, 1, 1],
+                                             [0, 0, 0, 0, 1, 1, 1, 0],
                                              "~000X0000000000~",
-                                             "CA",
+                                             "TX",
                                              puzzle_index > idx))
         idx += 1
         self.puzzles.append(SinglePuzzleData(" Puzzle 3",
                                              "Quote 3",
-                                             [0, 0, 0, 0, 0, 0, 1, 1],
+                                             [0, 1, 1, 1, 0, 1, 0, 1],
                                              "Solved 3",
-                                             "AZ",
+                                             "NM",
                                              puzzle_index > idx))
         idx += 1
         self.puzzles.append(SinglePuzzleData(" Puzzle 4",
                                              "Quote 4",
-                                             [0, 0, 0, 0, 0, 1, 0, 0],
+                                             [0, 1, 1, 1, 0, 1, 0, 1],
                                              "Solved 4",
-                                             "TX",
+                                             "AZ",
                                              puzzle_index > idx))
         idx += 1
         self.puzzles.append(SinglePuzzleData(" Puzzle 5",
-                                             "Quote 5",
-                                             [0, 0, 0, 0, 0, 1, 0, 1],
+                                             "In wisdom gathered over time\nI have found that every\nexperience is a\nform of exploration.\n   - Ansel Adams",
+                                             [0, 1, 0, 0, 1, 0, 1, 1],
                                              "Solved 5",
-                                             "NV",
+                                             "CA",
                                              puzzle_index > idx))
         idx += 1
         self.puzzles.append(SinglePuzzleData(" Puzzle 6",
                                              "Quote 6",
-                                             [0, 0, 0, 0, 0, 1, 1, 0],
+                                             [1, 1, 0, 0, 1, 0, 0, 1],
                                              "Solved 6",
-                                             "NM",
+                                             "NV",
                                              puzzle_index > idx))
         idx += 1
         self.puzzles.append(SinglePuzzleData(" Puzzle 7",
                                              "Quote 7",
-                                             [0, 0, 0, 0, 0, 1, 1, 1],
+                                             [1, 0, 0, 1, 1, 0, 1, 0],
                                              "Solved 7",
-                                             "4C",
+                                             "UT",
                                              puzzle_index > idx))
         idx += 1
         self.puzzles.append(SinglePuzzleData(" Puzzle 8",
                                              "Quote 8",
-                                             [0, 0, 0, 0, 1, 0, 0, 0],
+                                             [1, 1, 1, 0, 0, 0, 0, 1],
                                              "Solved 8",
-                                             "??",
+                                             "4C",
                                              puzzle_index > idx))
         idx += 1
-        self.puzzles.append(SinglePuzzleData(" Puzzle 9",
+        self.puzzles.append(SinglePuzzleData(" Solve the Maze.\n The CLUE it gives you\n will point you to\n 4 other puzzles.",
                                              "Quote 9",
-                                             [0, 0, 0, 0, 1, 0, 0, 1],
+                                             [0, 1, 1, 0, 0, 1, 1, 0],
                                              "Solved 9",
                                              "??",
                                              puzzle_index > idx))
         idx += 1
-        self.puzzles.append(SinglePuzzleData(" Puzzle 10",
+        self.puzzles.append(SinglePuzzleData(" So many puzzles.\n You're nearly finished!\n Solving the\n  Puzzle of Puzzles\n will point you\n to 4 more puzzles.",
                                              "Quote 10",
-                                             [0, 0, 0, 0, 1, 0, 1, 0],
+                                             [1, 1, 0, 1, 0, 0, 0, 1],
                                              "Solved X",
                                              "??",
+                                             puzzle_index > idx))
+        idx += 1
+        self.puzzles.append(SinglePuzzleData(" You've solved all the puzzles!\n Have you found other things?\n The final code that you need\n is:  285",
+                                             "Quote 10",
+                                             [1, 1, 0, 1, 0, 0, 0, 1],
+                                             "",
+                                             "  ",
                                              puzzle_index > idx))
