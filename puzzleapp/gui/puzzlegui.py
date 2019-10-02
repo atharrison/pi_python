@@ -14,6 +14,7 @@ class PuzzleGui:
 
     def __init__(self, root, switch_controller, puzzle_tracker):
         self.master = root
+        self.ip_address = IPAddress()
         self.switch_controller = switch_controller
         self.puzzle_tracker = puzzle_tracker
         self.progress_text = StringVar()
@@ -80,11 +81,10 @@ class PuzzleGui:
                   bg=self.root_bg,
                   fg=self.text_color)
 
-        ip_address = IPAddress()
         ip_box = Label(master_frame,
                 font=("courier new", 8, ""),
                        justify="right",
-                       text=ip_address.ip(),
+                       text=self.ip_address.ip(),
                        # textvariable=self.ip_text,
                        bg=self.root_bg,
                        # bg="green",
@@ -167,6 +167,7 @@ class PuzzleGui:
         self.master.after(0, progress_task, self.progress_box, self.puzzle_tracker, self.master)
         self.master.after(500, check_for_next_answer, self.master, self.puzzle_tracker, self.switch_controller, self.solution_text)
 
+        self.master.after(1000, update_ip, self.master, self.ip_address, self.ip_text)
         # If self-destructing, do this:
         # self.master.after(34000, kill_task, self.master)
 

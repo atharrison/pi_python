@@ -61,3 +61,7 @@ def check_for_next_answer(master, puzzle_tracker, switch_controller, solution_te
 def fast_blink_task(switch_controller):
     print("\a") # Beep
     switch_controller.blink_button_fast()
+
+def update_ip(master, ip_address, ip_text):
+    ip_text.set(ip_address.ip())
+    master.after(1000, update_ip, master, ip_address, ip_text)
