@@ -61,7 +61,9 @@ class PuzzleTracker:
         self.puzzle_index = index
 
         # If you want to reset, set index here to 0
-        self.puzzle_index = 0
+        if os.name == 'nt':
+            # Always reset, for now, on Windows
+            self.puzzle_index = 0
 
         self.load_puzzles(self.puzzle_index)
 
@@ -72,6 +74,9 @@ class PuzzleTracker:
         return result
 
     def current_answer(self):
+        if self.puzzle_index >= len(self.puzzles):
+            return []
+
         return self.puzzles[self.puzzle_index].get_answer_array()
 
     def current_quote(self):
@@ -93,7 +98,7 @@ class PuzzleTracker:
         return result
 
     def get_progress_percent(self):
-        return float(self.puzzle_index) / float(self.get_total_puzzles()) * 100
+        return float(self.puzzle_index) / float(self.get_total_puzzles()-1) * 100
 
     def load_puzzles(self, puzzle_index):
         idx = 0
@@ -107,83 +112,83 @@ class PuzzleTracker:
         self.puzzles.append(SinglePuzzleData(" System Enabled\n Diagnostics Part 2 ...\n\n Now, switch everything to 0,\n then press the button.",
                                              "                    ",
                                              [0, 0, 0, 0, 0, 0, 0, 0],
-                                             "----------------",
+                                             "---------------",
                                              "--",
                                              puzzle_index > idx))
         idx+=1
-        self.puzzles.append(SinglePuzzleData(" Congratulations!\n You have unlocked the PuzzleBox 1000!\n\n To begin, find the puzzle named\n  'Binary Numbers'.",
+        self.puzzles.append(SinglePuzzleData(" Diagnostics Complete!\n You have unlocked the PuzzleBox 1000!\n\n Your goal is to solve my puzzles, in a certain order.\n There is a special surprise at the end!\n  To begin, find the puzzle named\n  'Binary Numbers'.",
                                              "Every journey begins\n  with the first step.\n    ― Lao Tzu",
                                              [0, 0, 0, 1, 1, 0, 1, 1],
-                                             "~~~~~~~~~~~~~~~~",
+                                             ".~~~~~~~~~~~~~.",
                                              "  ",
                                              puzzle_index > idx))
         idx+=1
-        self.puzzles.append(SinglePuzzleData(" Most puzzles will be solved in groups of 4, \n related in some way.\n The column on the right\n will guide you on your way.",
+        self.puzzles.append(SinglePuzzleData(" Most puzzles will be solved in groups of 4, \n related in some way.\n The column on the right\n will guide you on your way. \n(Hint: Find the puzzles related to Texas!)",
                                              "Never give up and\n   good luck will find you.\n    - Falcor,\n     The Neverending Story",
                                              [0, 0, 0, 0, 1, 1, 1, 0],
-                                             "~000X0000000000~",
+                                             "~ X X X X X X ~",
                                              "TX",
                                              puzzle_index > idx))
         idx += 1
-        self.puzzles.append(SinglePuzzleData(" Puzzle 3",
-                                             "Quote 3",
+        self.puzzles.append(SinglePuzzleData(" More info can be found\n in that States and Capitals book.\n If you know where we're travelling,\n you'll know where to look!",
+                                             "It does not matter\nhow slowly you go\nas long as you do not stop.\n   - Confucius",
                                              [0, 1, 1, 1, 0, 1, 0, 1],
-                                             "Solved 3",
+                                             "~ X O X X X X ~",
                                              "NM",
                                              puzzle_index > idx))
         idx += 1
-        self.puzzles.append(SinglePuzzleData(" Puzzle 4",
-                                             "Quote 4",
-                                             [0, 1, 1, 1, 0, 1, 0, 1],
-                                             "Solved 4",
+        self.puzzles.append(SinglePuzzleData(" Keep it up, you are well on your way!\n Solve some more puzzles\n and don't throw them away!",
+                                             "Study nature, love nature,\nstay close to nature.\nIt will never fail you.\n    - Frank Lloyd Wright",
+                                             [1, 1, 1, 0, 0, 1, 1, 0],
+                                             "~ X X X X O X ~",
                                              "AZ",
                                              puzzle_index > idx))
         idx += 1
-        self.puzzles.append(SinglePuzzleData(" Puzzle 5",
+        self.puzzles.append(SinglePuzzleData(" The halfway point,\n once you've solved this group.\n Take a break if you need!\n You don't have to solve \n in one fell swoop!",
                                              "In wisdom gathered over time\nI have found that every\nexperience is a\nform of exploration.\n   - Ansel Adams",
                                              [0, 1, 0, 0, 1, 0, 1, 1],
-                                             "Solved 5",
+                                             "~ X X O X X X ~",
                                              "CA",
                                              puzzle_index > idx))
         idx += 1
-        self.puzzles.append(SinglePuzzleData(" Puzzle 6",
-                                             "Quote 6",
+        self.puzzles.append(SinglePuzzleData(" Mathematics is fun, and logic is too.\n But travelling, you'll see,\n is just as fun too!",
+                                             "The world is a book,\nand those who do not travel\nread only one page.\n  - Saint Augustine",
                                              [1, 1, 0, 0, 1, 0, 0, 1],
-                                             "Solved 6",
+                                             "~ X X X X X X ~",
                                              "NV",
                                              puzzle_index > idx))
         idx += 1
-        self.puzzles.append(SinglePuzzleData(" Puzzle 7",
-                                             "Quote 7",
+        self.puzzles.append(SinglePuzzleData(" By now you've pieced together\n nearly all you've been handed.\n But more awaits still\n I won't leave you stranded.",
+                                             "Traveling - it leaves\nyou speechless,\nthen turns you\ninto a storyteller.\n   - Ibn Battuta",
                                              [1, 0, 0, 1, 1, 0, 1, 0],
-                                             "Solved 7",
+                                             "~ X X X X X O ~",
                                              "UT",
                                              puzzle_index > idx))
         idx += 1
-        self.puzzles.append(SinglePuzzleData(" Puzzle 8",
-                                             "Quote 8",
+        self.puzzles.append(SinglePuzzleData(" Now see here, you'll find\n some puzzles repeat.\n Look closer, you'll see,\n how some states meet!",
+                                             "Our greatest weakness lies in giving up.\nThe most certain way to succeed\nis always to try just one more time.\n   - Thomas Edison",
                                              [1, 1, 1, 0, 0, 0, 0, 1],
-                                             "Solved 8",
+                                             "~ O X X X X X ~",
                                              "4C",
                                              puzzle_index > idx))
         idx += 1
         self.puzzles.append(SinglePuzzleData(" Solve the Maze.\n The CLUE it gives you\n will point you to\n 4 other puzzles.",
-                                             "Quote 9",
+                                             "Some people talk to animals.\nNot many listen though.\nThat's the problem.\n   - A.A. Milne",
                                              [0, 1, 1, 0, 0, 1, 1, 0],
-                                             "Solved 9",
+                                             "~ X X O X X X ~",
                                              "??",
                                              puzzle_index > idx))
         idx += 1
-        self.puzzles.append(SinglePuzzleData(" So many puzzles.\n You're nearly finished!\n Solving the\n  Puzzle of Puzzles\n will point you\n to 4 more puzzles.",
-                                             "Quote 10",
+        self.puzzles.append(SinglePuzzleData(" So many puzzles.\n You're nearly finished!\n Solving the\n  Puzzle of Puzzles\n will point you\n to the last 4 puzzles.",
+                                             "Start by doing what's necessary;\nthen do what's possible;\nand suddenly you are doing the impossible.\n   - Francis of Assisi",
                                              [1, 1, 0, 1, 0, 0, 0, 1],
-                                             "Solved X",
+                                             "*~~~~~~~~~~~~~*",
                                              "??",
                                              puzzle_index > idx))
         idx += 1
-        self.puzzles.append(SinglePuzzleData(" You've solved all the puzzles!\n Have you found other things?\n The final code that you need\n is:  285",
-                                             "Quote 10",
-                                             [1, 1, 0, 1, 0, 0, 0, 1],
+        self.puzzles.append(SinglePuzzleData(" You've solved all the puzzles!\n Now there's just two things left.\n (Have you found the other objects?)\n 1. Check your Progress, it holds a key.\n 2. How low is the lowest point\n     in Death Valley?",
+                                             "The biggest reward\nfor a thing well done\nis to have done it.\n   – Voltaire",
+                                             [],
                                              "",
                                              "  ",
                                              puzzle_index > idx))

@@ -109,6 +109,14 @@ class PuzzleGui:
                   bg=self.root_bg,
                   fg=self.text_color)
 
+        exit_button = Button(master_frame,
+                             text="EXIT",
+                             bg=self.root_bg,
+                             fg=self.root_bg, # really hidden
+                             highlightthickness=0,
+                             bd=0,
+                             command=self.exit_method)
+
         # Grid:
         master_frame.grid(row=0, column=0, sticky="NSEW")
         master_frame.grid_rowconfigure(0, weight=10)
@@ -117,6 +125,8 @@ class PuzzleGui:
         # self.progress_box.grid(row=0, column=0, columnspan=3, sticky="NW")
         progress_canvas.grid(row=0, column=0, columnspan=3, sticky="NW")
         left_msg_box.grid(row=1, column=0, rowspan=2, columnspan=1, sticky="NW",pady=100)
+
+        exit_button.grid(row=2, column=0, columnspan=1, sticky="SW")
 
         solution_box.grid(row=2, column=1, columnspan=1, sticky="N", padx=30, pady=0)
         solution_box.grid_rowconfigure(0, weight=1)
@@ -155,13 +165,16 @@ class PuzzleGui:
         self.master.after(0, puzzle_desc_task, self.left_msg_text, self.puzzle_tracker, self.master)
         self.master.after(0, quote_task, self.right_msg_text, self.puzzle_tracker, self.master)
         self.master.after(0, progress_task, self.progress_box, self.puzzle_tracker, self.master)
-        self.master.after(1000, check_for_next_answer, self.master, self.puzzle_tracker, self.switch_controller, self.solution_text)
+        self.master.after(500, check_for_next_answer, self.master, self.puzzle_tracker, self.switch_controller, self.solution_text)
 
         # If self-destructing, do this:
         # self.master.after(34000, kill_task, self.master)
 
         # If mocking, do this:
-        self.master.after(1500, push_button, self.master, self.switch_controller)
+        self.master.after(2500, push_button, self.master, self.switch_controller)
+
+    def exit_method(self):
+        self.master.after(0, kill_task, self.master)
 
     def start(self):
         self.master.mainloop()
