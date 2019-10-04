@@ -175,7 +175,7 @@ class PuzzleTracker:
         self.puzzles.append(SinglePuzzleData(" Solve the Maze.\n The CLUE it gives you\n will point you to\n 4 other puzzles.",
                                              "Some people talk to animals.\nNot many listen though.\nThat's the problem.\n   - A.A. Milne",
                                              [0, 1, 1, 0, 0, 1, 1, 0],
-                                             "~ X X O X X X ~",
+                                             "~ X X X X X X ~",
                                              "??",
                                              puzzle_index > idx))
         idx += 1
