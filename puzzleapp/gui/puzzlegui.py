@@ -92,7 +92,7 @@ class PuzzleGui:
                        )
 
         solution_box = Label(master_frame,
-                          font=("courier new", 12, ""),
+                          font=("courier new", 14, ""),
                           justify="right",
                           # image=self.image,
                          textvariable=self.solution_text,

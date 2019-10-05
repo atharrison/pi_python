@@ -105,7 +105,7 @@ class PuzzleTracker:
         self.puzzles.append(SinglePuzzleData(" System Enabled\n Diagnostics Part 1 ...\n\n Switch everything to 1,\n then press the button.",
                                              "",
                                              [1, 1, 1, 1, 1, 1, 1, 1],
-                                             "   Progress     ",
+                                             "    Progress    ",
                                              "  ",
                                              puzzle_index > idx))
         idx+=1
@@ -123,35 +123,35 @@ class PuzzleTracker:
                                              "  ",
                                              puzzle_index > idx))
         idx+=1
-        self.puzzles.append(SinglePuzzleData(" Most puzzles will be solved in groups of 4, \n related in some way.\n The column on the right\n will guide you on your way. \n(Hint: Find the puzzles related to Texas!)",
+        self.puzzles.append(SinglePuzzleData(" Most puzzles will be solved in groups of 4, \n related in some way.\n The column on the right\n will guide you on your way. \n\n (Hint: Find the puzzles related to Texas!)",
                                              "Never give up and\n   good luck will find you.\n    - Falcor,\n     The Neverending Story",
                                              [0, 0, 0, 0, 1, 1, 1, 0],
                                              "~ X X X X X X ~",
                                              "TX",
                                              puzzle_index > idx))
         idx += 1
-        self.puzzles.append(SinglePuzzleData(" More info can be found\n in that States and Capitals book.\n If you know where we're travelling,\n you'll know where to look!",
+        self.puzzles.append(SinglePuzzleData(" (Ask Mom & Dad about the\n Passport for your adventures!)\n\n More info can be found\n in that States and Capitals book.\n If you know where we're travelling,\n you'll know where to look!",
                                              "It does not matter\nhow slowly you go\nas long as you do not stop.\n   - Confucius",
                                              [0, 1, 1, 1, 0, 1, 0, 1],
                                              "~ X O X X X X ~",
                                              "NM",
                                              puzzle_index > idx))
         idx += 1
-        self.puzzles.append(SinglePuzzleData(" Keep it up, you are well on your way!\n Solve some more puzzles\n and don't throw them away!",
+        self.puzzles.append(SinglePuzzleData(" Your brains have carried you this far,\n you're well on your way!\n Solve some more puzzles\n and don't throw them away!",
                                              "Study nature, love nature,\nstay close to nature.\nIt will never fail you.\n    - Frank Lloyd Wright",
                                              [1, 1, 1, 0, 0, 1, 1, 0],
                                              "~ X X X X O X ~",
                                              "AZ",
                                              puzzle_index > idx))
         idx += 1
-        self.puzzles.append(SinglePuzzleData(" The halfway point,\n once you've solved this group.\n Take a break if you need!\n You don't have to solve \n in one fell swoop!",
+        self.puzzles.append(SinglePuzzleData(" Congratulations for sticking with it!\n\n The halfway point,\n once you've solved this group.\n Take a break if you need!\n You don't have to solve \n in one fell swoop!",
                                              "In wisdom gathered over time\nI have found that every\nexperience is a\nform of exploration.\n   - Ansel Adams",
                                              [0, 1, 0, 0, 1, 0, 1, 1],
                                              "~ X X O X X X ~",
                                              "CA",
                                              puzzle_index > idx))
         idx += 1
-        self.puzzles.append(SinglePuzzleData(" Mathematics is fun, and logic is too.\n But travelling, you'll see,\n is just as fun too!",
+        self.puzzles.append(SinglePuzzleData(" Mathematics is fun,\n and logic is too.\n But travelling together\n brings adventures for you!",
                                              "The world is a book,\nand those who do not travel\nread only one page.\n  - Saint Augustine",
                                              [1, 1, 0, 0, 1, 0, 0, 1],
                                              "~ X X X X X X ~",
@@ -172,21 +172,21 @@ class PuzzleTracker:
                                              "4C",
                                              puzzle_index > idx))
         idx += 1
-        self.puzzles.append(SinglePuzzleData(" Solve the Maze.\n The CLUE it gives you\n will point you to\n 4 other puzzles.",
+        self.puzzles.append(SinglePuzzleData(" Lions and tigers and bears,\n Oh my!\n Solve the Maze to reveal\n 4 puzzles to try!",
                                              "Some people talk to animals.\nNot many listen though.\nThat's the problem.\n   - A.A. Milne",
                                              [0, 1, 1, 0, 0, 1, 1, 0],
                                              "~ X X X X X X ~",
                                              "??",
                                              puzzle_index > idx))
         idx += 1
-        self.puzzles.append(SinglePuzzleData(" So many puzzles.\n You're nearly finished!\n Solving the\n  Puzzle of Puzzles\n will point you\n to the last 4 puzzles.",
+        self.puzzles.append(SinglePuzzleData(" So many puzzles,\n oh what to do!\n Solving the Puzzle of Puzzles\n will guide your way through!",
                                              "Start by doing what's necessary;\nthen do what's possible;\nand suddenly you are doing the impossible.\n   - Francis of Assisi",
                                              [1, 1, 0, 1, 0, 0, 0, 1],
                                              "*~~~~~~~~~~~~~*",
                                              "??",
                                              puzzle_index > idx))
         idx += 1
-        self.puzzles.append(SinglePuzzleData(" You've solved all the puzzles!\n Now there's just two things left.\n (Have you found the other objects?)\n 1. Check your Progress, it holds a key.\n 2. How low is the lowest point\n     in Death Valley?",
+        self.puzzles.append(SinglePuzzleData(" You've solved all the puzzles!\n Wait no, another three?\n The box and two locks,\n what is there to free?\n\n 1. Check your Progress, it holds a key.\n 2. How low is the lowest point\n     in Death Valley?",
                                              "The biggest reward\nfor a thing well done\nis to have done it.\n   – Voltaire",
                                              [],
                                              "",
